@@ -1,0 +1,17 @@
+[
+    {
+        "id": "level_1",
+        "timeLimit": 90,
+        "points": 100
+    },
+    {
+        "id": "level_2",
+        "timeLimit": 80,
+        "points": 150
+    },
+    {
+        "id": "level_3",
+        "timeLimit": 70,
+        "points": 200
+    }
+]
