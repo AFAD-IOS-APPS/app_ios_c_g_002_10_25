@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol HomeViewProtocol: AnyObject {
-    
-}
+protocol HomeViewProtocol: AnyObject {}
 
 final class HomeViewController: UIViewController, HomeViewProtocol {
     private let presenter: HomePresenter

@@ -8,9 +8,7 @@
 import UIKit
 import Combine
 
-protocol AccountViewProtocol: AnyObject {
-    
-}
+protocol AccountViewProtocol: AnyObject {}
 
 class AccountViewController: UIViewController, AccountViewProtocol {
     

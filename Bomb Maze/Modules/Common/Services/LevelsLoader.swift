@@ -21,7 +21,7 @@ final class LevelsLoader {
     
     func loadLevels() -> [Level] {
         guard let url = Bundle.main.url(forResource: "levels", withExtension: "json") else {
-            print("❌ levels.json not found in bundle")
+            print("File not found in bundle")
             return []
         }
         do {
@@ -29,7 +29,7 @@ final class LevelsLoader {
             let levels = try JSONDecoder().decode([Level].self, from: data)
             return levels
         } catch {
-            print("❌ Failed to decode levels.json:", error)
+            print("Decoding error", error)
             return []
         }
     }

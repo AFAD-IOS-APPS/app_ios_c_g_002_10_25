@@ -8,9 +8,7 @@
 import UIKit
 import Combine
 
-protocol RegisterViewProtocol: AnyObject {
-    
-}
+protocol RegisterViewProtocol: AnyObject {}
 
 class RegisterViewController: UIViewController, RegisterViewProtocol {
     

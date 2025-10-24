@@ -116,7 +116,6 @@ final class LevelsCollectionView: UIView {
         section.orthogonalScrollingBehavior = .groupPaging
         section.interGroupSpacing = pageSpacing
         
-        // --- visibleItemsInvalidationHandler для UIPageControl ---
         section.visibleItemsInvalidationHandler = { _, offset, _ in
             let page = Int(round(offset.x / UIScreen.main.bounds.width))
             pageUpdateHandler(page)
