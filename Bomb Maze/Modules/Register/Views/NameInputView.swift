@@ -16,7 +16,7 @@ final class NameInputView: GradientView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .white
-        label.font = UIFont(name: "Marker Felt", size: 36) ?? .boldSystemFont(ofSize: 36)
+        label.font = .chalkboard(size: 28)
         return label
     }()
     
@@ -24,7 +24,7 @@ final class NameInputView: GradientView {
         let textField = UITextField()
         textField.placeholder = "Type your name.."
         textField.textAlignment = .center
-        textField.font = UIFont(name: "Marker Felt", size: 24) ?? .systemFont(ofSize: 24)
+        textField.font = .chalkboard(size: 22)
         textField.textColor = .darkGray
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 30
@@ -38,11 +38,11 @@ final class NameInputView: GradientView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
+        fatalError("init(coder:) has not been implemented")
     }
         
     private func setupView() {
@@ -50,16 +50,17 @@ final class NameInputView: GradientView {
         layer.masksToBounds = true
         
         configureGradient(colors: [
-            UIColor(red: 0.3, green: 0.4, blue: 1.0, alpha: 1.0),
-            UIColor(red: 0.1, green: 0.2, blue: 0.8, alpha: 1.0)
+            .blueGradientFirst,
+            .blueGradientSecond
         ])
         
-        addSubview(titleLabel)
-        addSubview(textField)
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        
+        [
+            titleLabel,
+            textField
+        ].forEach(addView)
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 38),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),

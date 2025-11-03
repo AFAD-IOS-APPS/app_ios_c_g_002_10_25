@@ -17,8 +17,7 @@ class GradientView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupLayer()
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupLayer() {

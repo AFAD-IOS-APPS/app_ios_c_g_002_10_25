@@ -11,13 +11,25 @@ final class UserDefaultsManager {
     static let shared = UserDefaultsManager()
     private let defaults = UserDefaults.standard
     
-    private init() {}
+    private init() {
+        UserDefaults.standard.register(
+            defaults: [
+                Keys.isMusicEnabled.rawValue: true
+            ]
+        )
+    }
     
     private enum Keys: String {
         case name
         case age
         case balance
         case progress
+        case selectedSkinId
+        case purchasedSkinIds
+        case selectedBoardId
+        case purchasedBoardIds
+        case isMusicEnabled
+        case musicVolume
     }
         
     var name: String? {
@@ -38,6 +50,61 @@ final class UserDefaultsManager {
     var progress: Int {
         get { defaults.integer(forKey: Keys.progress.rawValue) }
         set { defaults.set(newValue, forKey: Keys.progress.rawValue) }
+    }
+    
+    var isMusicEnabled: Bool {
+        get { UserDefaults.standard.bool(forKey: Keys.isMusicEnabled.rawValue) }
+        set { UserDefaults.standard.set(newValue, forKey: Keys.isMusicEnabled.rawValue) }
+    }
+    
+    var musicVolume: Float {
+        get { UserDefaults.standard.float(forKey: "musicVolume") == 0 ? 0.7 : UserDefaults.standard.float(forKey: "musicVolume") }
+        set { UserDefaults.standard.set(newValue, forKey: "musicVolume") }
+    }
+    
+    var selectedSkinId: String {
+        get { defaults.string(forKey: Keys.selectedSkinId.rawValue) ?? SkinType.silver.id }
+        set { defaults.set(newValue, forKey: Keys.selectedSkinId.rawValue) }
+    }
+    
+    var purchasedSkinIds: [String] {
+        get {
+            defaults.stringArray(forKey: Keys.purchasedSkinIds.rawValue)
+            ?? [SkinType.silver.id, SkinType.red.id]
+        }
+        set {
+            defaults.set(newValue, forKey: Keys.purchasedSkinIds.rawValue)
+        }
+    }
+    
+    var selectedBoardId: String {
+        get { defaults.string(forKey: Keys.selectedBoardId.rawValue) ?? BoardType.blue.id }
+        set { defaults.set(newValue, forKey: Keys.selectedBoardId.rawValue) }
+    }
+    
+    var purchasedBoardIds: [String] {
+        get { defaults.stringArray(forKey: Keys.purchasedBoardIds.rawValue)
+            ?? [BoardType.blue.id, BoardType.black.id]
+        }
+        set { defaults.set(newValue, forKey: Keys.purchasedBoardIds.rawValue) }
+    }
+}
+
+extension UserDefaultsManager {
+    func addPurchasedSkin(id: String) {
+        var skins = purchasedSkinIds
+        if !skins.contains(id) {
+            skins.append(id)
+            purchasedSkinIds = skins
+        }
+    }
+    
+    func addPurchasedBoard(id: String) {
+        var boards = purchasedBoardIds
+        if !boards.contains(id) {
+            boards.append(id)
+            purchasedBoardIds = boards
+        }
     }
 }
 

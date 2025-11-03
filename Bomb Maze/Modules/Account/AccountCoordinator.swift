@@ -7,10 +7,8 @@
 
 import UIKit
 
-final class AccountCoordinator: Coordinator {
-    weak var parentCoordinator: HomeCoordinator?
+final class AccountCoordinator {
     private let navigationController: UINavigationController
-    var childCoordinators: [Coordinator] = []
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,15 +19,13 @@ final class AccountCoordinator: Coordinator {
     }
     
     func dismiss() {
-        parentCoordinator?.childDidFinish(self)
         navigationController.dismiss(animated: true)
     }
 
     private func showAccountScreen() {
-        let presenter = AccountPresenter()
+        let presenter = AccountPresenter(coordinator: self)
         let view = AccountViewController(presenter: presenter)
         presenter.view = view
-        presenter.coordinator = self
         view.modalTransitionStyle = .crossDissolve
         view.modalPresentationStyle = .overFullScreen
         navigationController.present(view, animated: true)

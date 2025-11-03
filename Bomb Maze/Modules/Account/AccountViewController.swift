@@ -26,7 +26,7 @@ class AccountViewController: UIViewController, AccountViewProtocol {
     private let accountImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.account.image
+        imageView.image = .account
         return imageView
     }()
     
@@ -35,14 +35,14 @@ class AccountViewController: UIViewController, AccountViewProtocol {
     private let cancelImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.cross.image
+        imageView.image = .cross
         return imageView
     }()
     
     private let acceptImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.check.image
+        imageView.image = .check
         return imageView
     }()
     
@@ -72,14 +72,14 @@ class AccountViewController: UIViewController, AccountViewProtocol {
         dismissKeyboardOnTap()
         
         accountInfoView.namePublisher
-            .sink { text in
-                self.presenter.updateName(with: text)
+            .sink { [weak self] text in
+                self?.presenter.updateName(with: text)
             }
             .store(in: &cancellables)
         
         accountInfoView.agePublisher
-            .sink { text in
-                self.presenter.updateAge(with: text)
+            .sink { [weak self] text in
+                self?.presenter.updateAge(with: text)
             }
             .store(in: &cancellables)
     }
@@ -151,7 +151,7 @@ class AccountViewController: UIViewController, AccountViewProtocol {
     }
     
     @objc private func cancelChanges() {
-        presenter.coordinator?.dismiss()
+        presenter.coordinator.dismiss()
     }
     
     @objc private func acceptChanges() {

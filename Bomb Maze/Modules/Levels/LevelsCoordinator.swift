@@ -7,10 +7,8 @@
 
 import UIKit
 
-final class LevelsCoordinator: Coordinator {
-    weak var parentCoordinator: HomeCoordinator?
+final class LevelsCoordinator {
     private let navigationController: UINavigationController
-    var childCoordinators: [Coordinator] = []
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -20,23 +18,24 @@ final class LevelsCoordinator: Coordinator {
         showLevelsScreen()
     }
     
-    func showGameScreen() {
+    func showGameScreen(levelIndex: Int) {
         let gameCoordinator = GameCoordinator(navigationController: navigationController)
-        gameCoordinator.parentCoordinator = self
-        childCoordinators.append(gameCoordinator)
-        gameCoordinator.start()
+        gameCoordinator.start(levelIndex: levelIndex)
+    }
+    
+    func showGuideScreen() {
+        let guideCoordinator = GuideCoordinator(navigationController: navigationController)
+        guideCoordinator.start()
     }
     
     func dismiss() {
-        parentCoordinator?.childDidFinish(self)
         navigationController.popViewController(animated: true)
     }
 
     private func showLevelsScreen() {
-        let presenter = LevelsPresenter()
+        let presenter = LevelsPresenter(coordinator: self)
         let view = LevelsViewController(presenter: presenter)
         presenter.view = view
-        presenter.coordinator = self
         navigationController.pushViewController(view, animated: true)
     }
 }

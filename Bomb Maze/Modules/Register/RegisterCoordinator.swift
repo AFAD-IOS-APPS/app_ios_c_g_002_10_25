@@ -7,10 +7,9 @@
 
 import UIKit
 
-final class RegisterCoordinator: Coordinator {
+final class RegisterCoordinator {
     weak var parentCoordinator: AppCoordinator?
     private let navigationController: UINavigationController
-    var childCoordinators: [Coordinator] = []
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,16 +20,13 @@ final class RegisterCoordinator: Coordinator {
     }
 
     private func showRegisterScreen() {
-        let presenter = RegisterPresenter()
+        let presenter = RegisterPresenter(coordinator: self)
         let view = RegisterViewController(presenter: presenter)
         presenter.view = view
-        presenter.coordinator = self
         navigationController.setViewControllers([view], animated: false)
     }
 
     func finishRegistration() {
-        parentCoordinator?.childDidFinish(self)
         parentCoordinator?.start()
     }
 }
-

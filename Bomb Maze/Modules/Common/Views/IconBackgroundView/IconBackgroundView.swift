@@ -11,7 +11,6 @@ final class IconBackgroundView: GradientView {
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -26,14 +25,13 @@ final class IconBackgroundView: GradientView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupView() {
         clipsToBounds = true
         
-        addSubview(iconImageView)
+        addView(iconImageView)
         
         iconWidthConstraint = iconImageView.widthAnchor.constraint(equalToConstant: 40)
         iconHeightConstraint = iconImageView.heightAnchor.constraint(equalToConstant: 40)

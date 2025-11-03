@@ -9,5 +9,15 @@ import Foundation
 
 final class HomePresenter {
     weak var view: HomeViewProtocol?
-    weak var coordinator: HomeCoordinator?
+    var coordinator: HomeCoordinator
+    
+    var isMusicEnabled: Bool { UserDefaultsManager.shared.isMusicEnabled }
+    
+    init(coordinator: HomeCoordinator) {
+        self.coordinator = coordinator
+    }
+    
+    func toggleMusic() {
+        MusicManager.shared.toggleMusic()
+    }
 }

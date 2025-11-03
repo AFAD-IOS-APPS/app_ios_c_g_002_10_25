@@ -32,20 +32,16 @@ final class LevelsCollectionView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        collectionView = LevelsCollectionView.createLayoutCollectionView(
-            columns: 3,
-            rows: 5,
-            spacing: 13,
-            pageSpacing: 26,
-            pageUpdateHandler: nil
-        )
-        super.init(coder: coder)
-        setupCollectionView()
-        setupLayout()
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupCollectionView() {
         collectionView.backgroundColor = .clear
+        collectionView.isScrollEnabled = true
+        collectionView.alwaysBounceVertical = false
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = true
         collectionView.register(LevelCell.self, forCellWithReuseIdentifier: LevelCell.identifier)
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,9 +65,7 @@ final class LevelsCollectionView: UIView {
     func reloadData() {
         collectionView.reloadData()
     }
-    
-    var internalCollectionView: UICollectionView { collectionView }
-    
+        
     func configureLayoutWithPageUpdateHandler(_ handler: @escaping (Int) -> Void) {
         pageUpdateHandler = handler
         collectionView.setCollectionViewLayout(
@@ -86,8 +80,13 @@ final class LevelsCollectionView: UIView {
         )
     }
     
-    // MARK: - Layout
-    private static func createLayout(columns: Int, rows: Int, spacing: CGFloat, pageSpacing: CGFloat, pageUpdateHandler: @escaping (Int) -> Void) -> UICollectionViewLayout {
+    private static func createLayout(
+        columns: Int,
+        rows: Int,
+        spacing: CGFloat,
+        pageSpacing: CGFloat,
+        pageUpdateHandler: @escaping (Int) -> Void
+    ) -> UICollectionViewLayout {
         
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0 / CGFloat(columns)),
@@ -107,7 +106,7 @@ final class LevelsCollectionView: UIView {
         let pageGroup = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(CGFloat(rows) * 100)
+                heightDimension: .fractionalWidth(CGFloat(rows) / CGFloat(columns))
             ),
             subitems: Array(repeating: rowGroup, count: rows)
         )
@@ -124,8 +123,20 @@ final class LevelsCollectionView: UIView {
         return UICollectionViewCompositionalLayout(section: section)
     }
     
-    private static func createLayoutCollectionView(columns: Int, rows: Int, spacing: CGFloat, pageSpacing: CGFloat, pageUpdateHandler: ((Int) -> Void)?) -> UICollectionView {
-        let layout = createLayout(columns: columns, rows: rows, spacing: spacing, pageSpacing: pageSpacing, pageUpdateHandler: pageUpdateHandler ?? { _ in })
+    private static func createLayoutCollectionView(
+        columns: Int,
+        rows: Int,
+        spacing: CGFloat,
+        pageSpacing: CGFloat,
+        pageUpdateHandler: ((Int) -> Void)?
+    ) -> UICollectionView {
+        let layout = createLayout(
+            columns: columns,
+            rows: rows,
+            spacing: spacing,
+            pageSpacing: pageSpacing,
+            pageUpdateHandler: pageUpdateHandler ?? { _ in }
+        )
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }
 }

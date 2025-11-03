@@ -14,13 +14,13 @@ final class AccountInfoView: GradientView {
         let textField = PaddedTextField()
         textField.text = UserDefaultsManager.shared.name
         textField.placeholder = "Your name:"
-        textField.font = UIFont(name: "Marker Felt", size: 24) ?? .systemFont(ofSize: 24)
+        textField.font = .chalkboard(size: 22, weight: .regular)
         textField.textColor = .black
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 23
         textField.textPadding = .init(top: 4, left: 18, bottom: 4, right: 32)
         
-        let imageView = UIImageView(image: Assets.edit.image)
+        let imageView = UIImageView(image: .edit)
         imageView.contentMode = .scaleAspectFit
 
         let container = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
@@ -36,13 +36,13 @@ final class AccountInfoView: GradientView {
         let textField = PaddedTextField()
         textField.text = UserDefaultsManager.shared.age
         textField.placeholder = "Your age:"
-        textField.font = UIFont(name: "Marker Felt", size: 24) ?? .systemFont(ofSize: 24)
+        textField.font = .chalkboard(size: 22, weight: .regular)
         textField.textColor = .black
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 23
         textField.textPadding = .init(top: 4, left: 18, bottom: 4, right: 36)
         
-        let imageView = UIImageView(image: Assets.edit.image)
+        let imageView = UIImageView(image: .edit)
         imageView.contentMode = .scaleAspectFit
 
         let container = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
@@ -65,11 +65,11 @@ final class AccountInfoView: GradientView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
+        fatalError("init(coder:) has not been implemented")
     }
         
     private func setupView() {
@@ -81,8 +81,8 @@ final class AccountInfoView: GradientView {
         
         configureGradient(
             colors: [
-                Colors.blueGradientFirstColor.color,
-                Colors.blueGradientSecondColor.color
+                .blueGradientFirst,
+                .blueGradientSecond
             ]
         )
         
@@ -90,7 +90,9 @@ final class AccountInfoView: GradientView {
             nameTextField,
             ageTextField
         ].forEach(addView)
-        
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: topAnchor, constant: 63),
             nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 55),

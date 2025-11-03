@@ -9,7 +9,11 @@ import Foundation
 
 final class AccountPresenter {
     weak var view: AccountViewProtocol?
-    weak var coordinator: AccountCoordinator?
+    var coordinator: AccountCoordinator
+    
+    init(coordinator: AccountCoordinator) {
+        self.coordinator = coordinator
+    }
     
     private var name: String = UserDefaultsManager.shared.name ?? ""
     private var age: String = UserDefaultsManager.shared.age ?? ""
@@ -25,6 +29,6 @@ final class AccountPresenter {
     func acceptChanges() {
         UserDefaultsManager.shared.name = name
         UserDefaultsManager.shared.age = age
-        coordinator?.dismiss()
+        coordinator.dismiss()
     }
 }

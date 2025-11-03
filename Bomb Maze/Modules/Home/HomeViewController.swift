@@ -15,7 +15,7 @@ final class HomeViewController: UIViewController, HomeViewProtocol {
     private let backgroundView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.homeScreen.image
+        imageView.image = .homeScreen
         imageView.contentMode = .scaleToFill
         return imageView
     }()
@@ -23,28 +23,28 @@ final class HomeViewController: UIViewController, HomeViewProtocol {
     private let settingsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.settings.image
+        imageView.image = .settings
         return imageView
     }()
     
     private let accountImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.account.image
+        imageView.image = .account
         return imageView
     }()
     
     private let storeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.store.image
+        imageView.image = .store
         return imageView
     }()
     
     private let levelsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.levels.image
+        imageView.image = .levels
         return imageView
     }()
     
@@ -120,18 +120,18 @@ final class HomeViewController: UIViewController, HomeViewProtocol {
     }
     
     @objc private func openSettings() {
-        
+        presenter.coordinator.showSettings()
     }
     
     @objc private func openAccountInfo() {
-        presenter.coordinator?.showAccountInfo()
+        presenter.coordinator.showAccountInfo()
     }
     
     @objc private func openStore() {
-        
+        presenter.coordinator.showStore()
     }
     
     @objc private func openLevels() {
-        presenter.coordinator?.showLevels()
+        presenter.coordinator.showLevels()
     }
 }

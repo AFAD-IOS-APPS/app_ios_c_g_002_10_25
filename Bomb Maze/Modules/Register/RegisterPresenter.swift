@@ -9,7 +9,11 @@ import Foundation
 
 final class RegisterPresenter {
     weak var view: RegisterViewProtocol?
-    weak var coordinator: RegisterCoordinator?
+    var coordinator: RegisterCoordinator
+    
+    init(coordinator: RegisterCoordinator) {
+        self.coordinator = coordinator
+    }
     
     private var name: String = ""
     
@@ -19,10 +23,6 @@ final class RegisterPresenter {
     
     func finishRegistration() {
         UserDefaultsManager.shared.name = name
-        coordinator?.finishRegistration()
-    }
-    
-    deinit {
-        print("I'm deleted!")
+        coordinator.finishRegistration()
     }
 }

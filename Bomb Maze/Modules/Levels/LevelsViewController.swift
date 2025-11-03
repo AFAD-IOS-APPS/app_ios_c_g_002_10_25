@@ -7,16 +7,14 @@
 
 import UIKit
 
-protocol LevelsViewProtocol: AnyObject {
-    
-}
+protocol LevelsViewProtocol: AnyObject {}
 
 final class LevelsViewController: UIViewController, LevelsViewProtocol {
     private let presenter: LevelsPresenter
     
     private let backgroundView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Assets.levelsScreen.image
+        imageView.image = .levelsScreen
         imageView.contentMode = .scaleToFill
         return imageView
     }()
@@ -24,7 +22,7 @@ final class LevelsViewController: UIViewController, LevelsViewProtocol {
     private let backImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.back.image
+        imageView.image = .back
         return imageView
     }()
     
@@ -34,11 +32,18 @@ final class LevelsViewController: UIViewController, LevelsViewProtocol {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .white
-        label.font = UIFont(name: "Marker Felt", size: 36) ?? .boldSystemFont(ofSize: 36)
+        label.font = .chalkboard(size: 48)
         return label
     }()
     
     private let levelsView = LevelsView()
+    
+    private let guideImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
+        imageView.image = .guide
+        return imageView
+    }()
     
     init(presenter: LevelsPresenter) {
         self.presenter = presenter
@@ -56,10 +61,16 @@ final class LevelsViewController: UIViewController, LevelsViewProtocol {
         configureLevels()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        levelsView.reloadCollectionView()
+    }
+    
     private func setupViews() {
         [
             backgroundView,
             backImageView,
+            guideImageView,
             titleLabel,
             levelsView
             
@@ -80,6 +91,11 @@ final class LevelsViewController: UIViewController, LevelsViewProtocol {
             backImageView.widthAnchor.constraint(equalToConstant: 62),
             backImageView.heightAnchor.constraint(equalToConstant: 62),
             
+            guideImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            guideImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 28),
+            guideImageView.widthAnchor.constraint(equalToConstant: 62),
+            guideImageView.heightAnchor.constraint(equalToConstant: 62),
+            
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: backImageView.bottomAnchor),
             titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
@@ -92,8 +108,7 @@ final class LevelsViewController: UIViewController, LevelsViewProtocol {
     }
     
     private func configureLevels() {
-        let levels = LevelsLoader.shared.loadLevels()
-        levelsView.configureLevels(levels: levels)
+        levelsView.configure(levelsCount: LevelsLoader.shared.levelsCounts)
         levelsView.delegate = self
     }
     
@@ -101,15 +116,21 @@ final class LevelsViewController: UIViewController, LevelsViewProtocol {
         let backRecognizer = UITapGestureRecognizer(target: self, action: #selector(back))
         backImageView.addGestureRecognizer(backRecognizer)
         
+        let guideRecognizer = UITapGestureRecognizer(target: self, action: #selector(openGuide))
+        guideImageView.addGestureRecognizer(guideRecognizer)
     }
     
     @objc private func back() {
-        presenter.coordinator?.dismiss()
+        presenter.coordinator.dismiss()
+    }
+    
+    @objc private func openGuide() {
+        presenter.coordinator.showGuideScreen()
     }
 }
 
 extension LevelsViewController: LevelsViewDelegate {
-    func didChooseLevel(level: Level) {
-        presenter.didChooseLevel(level: level)
+    func didChooseLevel(index: Int) {
+        presenter.didChooseLevel(index: index)
     }
 }

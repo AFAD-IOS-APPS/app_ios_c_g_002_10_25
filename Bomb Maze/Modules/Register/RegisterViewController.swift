@@ -16,7 +16,7 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
     
     private let backgroundView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Assets.launchScreen.image
+        imageView.image = .launchScreen
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -27,7 +27,7 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
     private let playImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = Assets.play.image
+        imageView.image = .play
         return imageView
     }()
     
@@ -54,8 +54,8 @@ class RegisterViewController: UIViewController, RegisterViewProtocol {
         dismissKeyboardOnTap()
         
         nameView.textPublisher
-            .sink { text in
-                self.presenter.updateName(with: text)
+            .sink { [weak self] text in
+                self?.presenter.updateName(with: text)
             }
             .store(in: &cancellables)
     }

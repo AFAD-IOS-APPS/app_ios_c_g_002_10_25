@@ -9,10 +9,15 @@ import Foundation
 
 final class LevelsPresenter {
     weak var view: LevelsViewProtocol?
-    weak var coordinator: LevelsCoordinator?
-        
+    let coordinator: LevelsCoordinator
     
-    func didChooseLevel(level: Level) {
-        coordinator?.showGameScreen()
+    init(coordinator: LevelsCoordinator) {
+        self.coordinator = coordinator
+    }
+        
+    func didChooseLevel(index: Int) {
+        if index <= UserDefaultsManager.shared.progress {
+            coordinator.showGameScreen(levelIndex: index)
+        }
     }
 }

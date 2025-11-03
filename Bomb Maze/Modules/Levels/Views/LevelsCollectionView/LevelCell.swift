@@ -10,7 +10,7 @@ import UIKit
 final class LevelCell: UICollectionViewCell {
     static let identifier = "LevelCell"
     
-    private let pinkCircleView: GradientView = {
+    private let roundView: GradientView = {
         let view = GradientView()
         view.layer.masksToBounds = true
         view.layer.cornerRadius = 55 / 2
@@ -19,11 +19,16 @@ final class LevelCell: UICollectionViewCell {
     
     private let numberLabel: UILabel = {
         let label = UILabel()
-        label.text = "1"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 35)
         label.textAlignment = .center
         return label
+    }()
+    
+    private let lockImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = .lock
+        return imageView
     }()
     
     override init(frame: CGRect) {
@@ -41,36 +46,50 @@ final class LevelCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 17
         contentView.layer.masksToBounds = true
         
-        pinkCircleView.configureGradient(
-            colors: [
-                Colors.magentaGradientFirstColor.color,
-                Colors.magentaGradientSecondColor.color
-            ]
-        )
-        
-        contentView.addView(pinkCircleView)
-        pinkCircleView.addView(numberLabel)
+        contentView.addView(roundView)
+        [
+            numberLabel,
+            lockImageView
+        ].forEach(roundView.addView)
         
         NSLayoutConstraint.activate([
-            pinkCircleView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            pinkCircleView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            pinkCircleView.widthAnchor.constraint(equalToConstant: 55),
-            pinkCircleView.heightAnchor.constraint(equalToConstant: 55),
+            roundView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            roundView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            roundView.widthAnchor.constraint(equalToConstant: 55),
+            roundView.heightAnchor.constraint(equalToConstant: 55),
             
-            numberLabel.centerXAnchor.constraint(equalTo: pinkCircleView.centerXAnchor),
-            numberLabel.centerYAnchor.constraint(equalTo: pinkCircleView.centerYAnchor)
+            numberLabel.centerXAnchor.constraint(equalTo: roundView.centerXAnchor),
+            numberLabel.centerYAnchor.constraint(equalTo: roundView.centerYAnchor),
+            
+            lockImageView.widthAnchor.constraint(equalToConstant: 27),
+            lockImageView.heightAnchor.constraint(equalToConstant: 36),
+            lockImageView.centerXAnchor.constraint(equalTo: roundView.centerXAnchor),
+            lockImageView.centerYAnchor.constraint(equalTo: roundView.centerYAnchor),
         ])
     }
     
-    func configure(
-        with level: Level,
-        at index: Int
-    ) {
+    func configure(with index: Int) {
+        numberLabel.isHidden = false
+        lockImageView.isHidden = true
+        roundView.configureGradient(
+            colors: [
+                .magentaGradientFirst,
+                .magentaGradientSecond
+            ]
+        )
+        
         numberLabel.text = "\(index + 1)"
     }
     
     func configureEmpty() {
-        numberLabel.text = "0"
+        numberLabel.isHidden = true
+        lockImageView.isHidden = false
+        roundView.configureGradient(
+            colors: [
+                .gray,
+                .gray
+            ]
+        )
     }
 }
 

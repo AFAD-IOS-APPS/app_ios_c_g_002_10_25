@@ -7,9 +7,8 @@
 
 import UIKit
 
-final class HomeCoordinator: Coordinator {
+final class HomeCoordinator {
     private let navigationController: UINavigationController
-    var childCoordinators: [Coordinator] = []
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -20,28 +19,29 @@ final class HomeCoordinator: Coordinator {
     }
 
     private func showHomeScreen() {
-        let presenter = HomePresenter()
+        let presenter = HomePresenter(coordinator: self)
         let view = HomeViewController(presenter: presenter)
         presenter.view = view
-        presenter.coordinator = self
         navigationController.setViewControllers([view], animated: true)
+    }
+    
+    func showSettings() {
+        let settingsCoordinator = SettingsCoordinator(navigationController: navigationController)
+        settingsCoordinator.start()
+    }
+    
+    func showStore() {
+        let storeCoordinator = StoreCoordinator(navigationController: navigationController)
+        storeCoordinator.start()
     }
     
     func showAccountInfo() {
         let accountCoordinator = AccountCoordinator(navigationController: navigationController)
-        accountCoordinator.parentCoordinator = self
-        childCoordinators.append(accountCoordinator)
         accountCoordinator.start()
     }
     
     func showLevels() {
         let levelsCoordinator = LevelsCoordinator(navigationController: navigationController)
-        levelsCoordinator.parentCoordinator = self
-        childCoordinators.append(levelsCoordinator)
         levelsCoordinator.start()
-    }
-    
-    func childDidFinish(_ child: Coordinator) {
-        childCoordinators.removeAll { $0 === child }
     }
 }

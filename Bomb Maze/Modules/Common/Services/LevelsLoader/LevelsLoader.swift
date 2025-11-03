@@ -7,30 +7,32 @@
 
 import Foundation
 
-struct Level: Codable {
-    let id: String
-    let timeLimit: Int
-    let points: Int
-}
-
 final class LevelsLoader {
     
     static let shared = LevelsLoader()
     
+    private var levels: [Level] = []
+    
+    var levelsCounts: Int { levels.count }
+    
     private init() {}
     
-    func loadLevels() -> [Level] {
+    func loadLevels() {
         guard let url = Bundle.main.url(forResource: "levels", withExtension: "json") else {
             print("File not found in bundle")
-            return []
+            return
         }
         do {
             let data = try Data(contentsOf: url)
             let levels = try JSONDecoder().decode([Level].self, from: data)
-            return levels
+            self.levels = levels
         } catch {
             print("Decoding error", error)
-            return []
         }
+    }
+    
+    func levelAt(index: Int) -> Level? {
+        guard index >= 0, index < levels.count else { return nil }
+        return levels[index]
     }
 }

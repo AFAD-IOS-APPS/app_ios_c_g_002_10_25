@@ -8,17 +8,17 @@
 import UIKit
 
 protocol LevelsViewDelegate: AnyObject {
-    func didChooseLevel(level: Level)
+    func didChooseLevel(index: Int)
 }
 
 final class LevelsView: GradientView {
     
     weak var delegate: LevelsViewDelegate?
     
-    private var levels: [Level] = []
+    private var levelsCount: Int = 0
     
-    private let pageControl = UIPageControl()
-    private var levelsCollectionView: LevelsCollectionView!
+    private let pageControl = PageControl()
+    private var levelsCollectionView = LevelsCollectionView()
     
     private let columns = 3
     private let rows = 5
@@ -26,18 +26,17 @@ final class LevelsView: GradientView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupView() {
         layer.cornerRadius = 51
         layer.masksToBounds = true
         
-        levelsCollectionView = LevelsCollectionView()
         levelsCollectionView.configureLayoutWithPageUpdateHandler { [weak self] page in
             self?.pageControl.currentPage = page
         }
@@ -46,20 +45,18 @@ final class LevelsView: GradientView {
         
         configureGradient(
             colors: [
-                Colors.blueGradientFirstColor.color,
-                Colors.blueGradientSecondColor.color
+                .blueGradientFirst,
+                .blueGradientSecond
             ]
         )
         
-        addSubview(levelsCollectionView)
-        levelsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        addView(levelsCollectionView)
         
-        addSubview(pageControl)
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        addView(pageControl)
         pageControl.currentPage = 0
-        pageControl.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.5)
-        pageControl.currentPageIndicatorTintColor = .white
-        
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             levelsCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             levelsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -71,12 +68,16 @@ final class LevelsView: GradientView {
         ])
     }
     
-    func configureLevels(levels: [Level]) {
-        self.levels = levels
+    func reloadCollectionView() {
+        levelsCollectionView.reloadData()
+    }
+    
+    func configure(levelsCount: Int) {
+        self.levelsCount = levelsCount
         levelsCollectionView.reloadData()
         
         let itemsPerPage = columns * rows
-        let pages = Int(ceil(Double(levels.count) / Double(itemsPerPage)))
+        let pages = Int(ceil(Double(levelsCount) / Double(itemsPerPage)))
         pageControl.numberOfPages = max(pages, 1)
         pageControl.currentPage = 0
     }
@@ -86,19 +87,22 @@ extension LevelsView: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        levels.count
+        levelsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LevelCell.identifier, for: indexPath) as! LevelCell
-        cell.configure(
-            with: levels[indexPath.item],
-            at: indexPath.item
-        )
+        let progress = UserDefaultsManager.shared.progress
+        
+        if indexPath.item <= progress {
+            cell.configure(with: indexPath.item)
+        } else {
+            cell.configureEmpty()
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didChooseLevel(level: levels[indexPath.item])
+        delegate?.didChooseLevel(index: indexPath.item)
     }
 }
