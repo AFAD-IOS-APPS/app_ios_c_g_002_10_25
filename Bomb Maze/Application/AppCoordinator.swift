@@ -18,6 +18,10 @@ final class AppCoordinator {
     }
     
     func start() {
+        showSplash()
+    }
+    
+    func startMainFlow() {
         if let _ = UserDefaultsManager.shared.name {
             showHome()
         } else {
@@ -30,6 +34,12 @@ final class AppCoordinator {
         window.overrideUserInterfaceStyle = .light
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+    }
+    
+    private func showSplash() {
+        let splashCoordinator = SplashCoordinator(navigationController: navigationController)
+        splashCoordinator.parentCoordinator = self
+        splashCoordinator.start()
     }
     
     private func showHome() {
