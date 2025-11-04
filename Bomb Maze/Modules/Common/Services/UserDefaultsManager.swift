@@ -69,8 +69,11 @@ final class UserDefaultsManager {
     
     var purchasedSkinIds: [String] {
         get {
-            defaults.stringArray(forKey: Keys.purchasedSkinIds.rawValue)
-            ?? [SkinType.silver.id, SkinType.red.id]
+            var skins = defaults.stringArray(forKey: Keys.purchasedSkinIds.rawValue) ?? []
+            if !skins.contains(SkinType.silver.id) {
+                skins.append(SkinType.silver.id)
+            }
+            return skins
         }
         set {
             defaults.set(newValue, forKey: Keys.purchasedSkinIds.rawValue)
@@ -83,8 +86,12 @@ final class UserDefaultsManager {
     }
     
     var purchasedBoardIds: [String] {
-        get { defaults.stringArray(forKey: Keys.purchasedBoardIds.rawValue)
-            ?? [BoardType.blue.id, BoardType.black.id]
+        get {
+            var boards = defaults.stringArray(forKey: Keys.purchasedBoardIds.rawValue) ?? []
+            if !boards.contains(BoardType.blue.id) {
+                boards.append(BoardType.blue.id)
+            }
+            return boards
         }
         set { defaults.set(newValue, forKey: Keys.purchasedBoardIds.rawValue) }
     }
