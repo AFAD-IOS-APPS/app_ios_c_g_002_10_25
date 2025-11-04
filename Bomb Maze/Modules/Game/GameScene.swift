@@ -42,7 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         backgroundColor = .clear
-        physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
+        physicsWorld.gravity = CGVector(dx: 0, dy: -20)
         physicsWorld.contactDelegate = self
         
         setupGameArea()
@@ -143,18 +143,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         line.physicsBody = SKPhysicsBody(rectangleOf: line.size, center: CGPoint(x: length / 2, y: 0))
         line.physicsBody?.isDynamic = false
         line.physicsBody?.categoryBitMask = wallCategory
-        line.physicsBody?.friction = 0.3
+        line.physicsBody?.friction = 0.6
         
         addChild(line)
     }
 
     
-    private func addBall(
-        at position: CGPoint,
-        diameter: CGFloat = 40
-    ) {
+    private func addBall(at position: CGPoint, diameter: CGFloat = 40) {
         let texture = SKTexture(image: BallColor.random().image)
-        
         let ball = SKSpriteNode(texture: texture)
         ball.name = "ball"
         ball.position = position
@@ -163,8 +159,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let radius = ball.size.width / 2
         ball.physicsBody = SKPhysicsBody(circleOfRadius: radius)
         ball.physicsBody?.restitution = 0.4
-        ball.physicsBody?.friction = 0.3
-        ball.physicsBody?.linearDamping = 0.5
+        ball.physicsBody?.friction = 0.2
+        ball.physicsBody?.linearDamping = 0.1
         ball.physicsBody?.allowsRotation = true
         
         ball.physicsBody?.categoryBitMask = ballCategory
@@ -234,6 +230,19 @@ extension GameScene {
     }
     
     private func explode(_ node: SKNode) {
+        let explosion = SKShapeNode(circleOfRadius: node.frame.width / 2)
+        explosion.position = node.position
+        explosion.fillColor = .yellow
+        explosion.strokeColor = .orange
+        explosion.glowWidth = 5
+        explosion.zPosition = 10
+        addChild(explosion)
+        
+        let scaleUp = SKAction.scale(to: 2.0, duration: 0.1)
+        let fadeOut = SKAction.fadeOut(withDuration: 0.1)
+        let remove = SKAction.removeFromParent()
+        explosion.run(.sequence([.group([scaleUp, fadeOut]), remove]))
+        
         node.removeFromParent()
         checkWinCondition()
     }

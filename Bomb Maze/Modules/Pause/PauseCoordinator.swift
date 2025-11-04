@@ -18,14 +18,8 @@ final class PauseCoordinator {
         showPauseScreen(delegate: delegate)
     }
     
-    func resumeGame() {
+    func dismiss() {
         navigationController.dismiss(animated: true)
-    }
-    
-    func quitGame() {
-        navigationController.dismiss(animated: true) { [weak self] in
-            self?.navigationController.popViewController(animated: true)
-        }
     }
 
     private func showPauseScreen(delegate: PausePresenterDelegate?) {

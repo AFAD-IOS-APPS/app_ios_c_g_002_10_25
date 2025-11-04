@@ -44,7 +44,7 @@ class VolumeSlider: UIView {
     
     private let thumbView: UIView = {
         let view = UIView()
-        view.backgroundColor = .bordo
+        view.backgroundColor = .appBordo
         return view
     }()
     

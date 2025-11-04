@@ -101,7 +101,7 @@ class GameViewController: UIViewController {
     
     private let levelContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .magenta
+        view.backgroundColor = .magentaGradientFirst
         view.layer.cornerRadius = 25
         view.clipsToBounds = true
         return view

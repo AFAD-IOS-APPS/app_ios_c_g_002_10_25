@@ -86,8 +86,8 @@ final class LevelCell: UICollectionViewCell {
         lockImageView.isHidden = false
         roundView.configureGradient(
             colors: [
-                .gray,
-                .gray
+                .appGray,
+                .appGray
             ]
         )
     }

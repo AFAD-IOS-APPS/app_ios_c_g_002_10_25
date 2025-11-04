@@ -131,7 +131,7 @@ class PauseViewController: UIViewController, PauseViewProtocol {
     }
     
     @objc private func exitGame() {
-        presenter.coordinator.quitGame()
+        presenter.quitGame()
     }
 }
 

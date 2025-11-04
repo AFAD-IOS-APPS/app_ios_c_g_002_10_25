@@ -15,7 +15,7 @@ enum GameResult {
 final class ScoreView: UIView {
     private let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lavender
+        view.backgroundColor = .appLavender
         view.clipsToBounds = true
         view.layer.cornerRadius = 35
         return view
@@ -44,7 +44,7 @@ final class ScoreView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .sfPro(size: 21)
-        label.textColor = .magenta
+        label.textColor = .appMagenta
         return label
     }()
     
@@ -67,7 +67,7 @@ final class ScoreView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .sfPro(size: 21)
-        label.textColor = .magenta
+        label.textColor = .appMagenta
         return label
     }()
     
@@ -89,7 +89,7 @@ final class ScoreView: UIView {
     
     func configure(model: ScoreViewModel) {
         scoreAmountLabel.text = String(model.score)
-        rewardAmountLabel.text = String(model.reward)
+        configureTextAttachment(with: model.reward)
         
         scoreImageView.image = switch model.gameResult {
         case .win:
@@ -135,5 +135,23 @@ final class ScoreView: UIView {
             rewardAmountLabel.centerXAnchor.constraint(equalTo: rewardCapsuleImageView.centerXAnchor),
             rewardAmountLabel.centerYAnchor.constraint(equalTo: rewardCapsuleImageView.centerYAnchor),
         ])
+    }
+    
+    private func configureTextAttachment(with rewardAmount: Int) {
+        let attachment = NSTextAttachment()
+        attachment.image = .star
+        attachment.bounds = CGRect(x: 0, y: 0, width: 15, height: 15)
+        
+        let attachmentString = NSAttributedString(attachment: attachment)
+        let priceString = NSAttributedString(string: " \(rewardAmount)", attributes: [
+            .font: UIFont.sfPro(size: 21),
+            .foregroundColor: UIColor(resource: .appMagenta)
+        ])
+        
+        let combined = NSMutableAttributedString()
+        combined.append(attachmentString)
+        combined.append(priceString)
+        
+        rewardAmountLabel.attributedText = combined
     }
 }

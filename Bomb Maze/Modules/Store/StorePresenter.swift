@@ -29,7 +29,7 @@ final class StorePresenter {
                 : "Equip"
                 
                 let backgroundColor = skinType.isSelected
-                ? UIColor(resource: .pink)
+                ? UIColor(resource: .appPink)
                 : UIColor(resource: .greenGradientFirst)
                 
                 return StoreItemCellModel(
@@ -52,7 +52,7 @@ final class StorePresenter {
                 : "Equip"
                 
                 let backgroundColor = boardType.isSelected
-                ? UIColor(resource: .pink)
+                ? UIColor(resource: .appPink)
                 : UIColor(resource: .greenGradientFirst)
                 
                 return StoreItemCellModel(

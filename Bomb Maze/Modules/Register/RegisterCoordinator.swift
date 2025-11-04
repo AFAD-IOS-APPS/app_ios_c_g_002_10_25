@@ -23,7 +23,7 @@ final class RegisterCoordinator {
         let presenter = RegisterPresenter(coordinator: self)
         let view = RegisterViewController(presenter: presenter)
         presenter.view = view
-        navigationController.setViewControllers([view], animated: false)
+        navigationController.setViewControllers([view], animated: true)
     }
 
     func finishRegistration() {

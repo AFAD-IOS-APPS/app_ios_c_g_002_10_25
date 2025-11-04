@@ -132,7 +132,7 @@ class PurchaseViewController: UIViewController, PurchaseViewProtocol {
         confirmLabel.backgroundColor = UIColor(resource: .greenGradientFirst)
         confirmLabel.text = "YES"
         
-        cancelLabel.backgroundColor = UIColor(resource: .gray)
+        cancelLabel.backgroundColor = UIColor(resource: .appGray)
         cancelLabel.text = "NO"
 
         titleLabel.text = "DO YOU WANT WANT TO PURCHASE THE ITEM?"
@@ -141,7 +141,7 @@ class PurchaseViewController: UIViewController, PurchaseViewProtocol {
     private func configureForCancel() {
         buttonsStackView.addArrangedSubview(cancelLabel)
         
-        cancelLabel.backgroundColor = UIColor(resource: .gray)
+        cancelLabel.backgroundColor = UIColor(resource: .appGray)
         cancelLabel.text = "CLOSE"
         
         titleLabel.text = "YOU DON'T HAVE ENOUGH REWARDS"

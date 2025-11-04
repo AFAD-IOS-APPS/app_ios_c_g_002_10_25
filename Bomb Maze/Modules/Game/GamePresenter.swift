@@ -30,6 +30,7 @@ final class GamePresenter {
     func startGame() {
         guard displayLink == nil else { return }
         guard let level = LevelsLoader.shared.levelAt(index: levelIndex) else {
+            invalidateDisplayLink()
             coordinator.dismiss()
             return
         }
@@ -61,8 +62,7 @@ final class GamePresenter {
     func finishGame(gameResult: GameResult) {
         guard let level = LevelsLoader.shared.levelAt(index: levelIndex) else { return }
 
-        displayLink?.invalidate()
-        displayLink = nil
+        invalidateDisplayLink()
                 
         coordinator.showScoreScreen(
             inputData: .init(
@@ -113,6 +113,11 @@ final class GamePresenter {
         view?.updateScoreLabel(with: "\(score)")
     }
     
+    private func invalidateDisplayLink() {
+        displayLink?.invalidate()
+        displayLink = nil
+    }
+    
     @objc private func updateTimer(_ link: CADisplayLink) {
         guard !isPausedManually else { return }
         let currentTime = CACurrentMediaTime()
@@ -129,8 +134,7 @@ final class GamePresenter {
     }
     
     deinit {
-        displayLink?.invalidate()
-        displayLink = nil
+        invalidateDisplayLink()
     }
 }
 
@@ -138,6 +142,11 @@ extension GamePresenter: PausePresenterDelegate {
     func didResumeGame() {
         resumeGame()
         view?.resumeGame()
+    }
+    
+    func didQuitGame() {
+        invalidateDisplayLink()
+        coordinator.dismiss()
     }
 }
 

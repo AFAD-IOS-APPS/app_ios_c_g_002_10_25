@@ -9,6 +9,7 @@ import Foundation
 
 protocol PausePresenterDelegate: AnyObject {
     func didResumeGame()
+    func didQuitGame()
 }
 
 final class PausePresenter {
@@ -24,7 +25,12 @@ final class PausePresenter {
     
     func resumeGame() {
         delegate?.didResumeGame()
-        coordinator.resumeGame()
+        coordinator.dismiss()
+    }
+    
+    func quitGame() {
+        delegate?.didQuitGame()
+        coordinator.dismiss()
     }
     
     func toggleMusic() {

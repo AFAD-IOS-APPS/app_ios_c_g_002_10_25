@@ -79,17 +79,17 @@ enum BoardType: CaseIterable, Identifiable {
     var color: UIColor {
         switch self {
         case .blue:
-            return UIColor(resource: .blue)
+            return UIColor(resource: .appBlue)
         case .green:
-            return UIColor(resource: .green)
+            return UIColor(resource: .appGreen)
         case .pink:
-            return UIColor(resource: .pink)
+            return UIColor(resource: .appPink)
         case .red:
-            return UIColor(resource: .red)
+            return UIColor(resource: .appRed)
         case .teal:
-            return UIColor(resource: .teal)
+            return UIColor(resource: .appTeal)
         case .black:
-            return UIColor(resource: .white)
+            return .white
         }
     }
 }
