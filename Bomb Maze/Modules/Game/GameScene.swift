@@ -220,6 +220,8 @@ extension GameScene {
         switch diameter {
         case 20:
             return 10
+        case 25:
+            return 15
         case 30:
             return 20
         case 40:
