@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A85B43A184D40DF020E527A /* Pods_Bomb_Maze.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E87F50B5847BA645280FD8 /* Pods_Bomb_Maze.framework */; };
+		42561152040BA4FDEEB7C3FB /* Pods_Ball_Smash_Maze.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57EF2C892C0B870149A14CBB /* Pods_Ball_Smash_Maze.framework */; };
 		B5FD777D2EB9007B0099BF1C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B5FD777C2EB9007B0099BF1C /* Lottie */; };
 /* End PBXBuildFile section */
 
@@ -26,18 +26,20 @@
 
 /* Begin PBXFileReference section */
 		52D4FEF6615E9CCBAD6F238A /* Pods-Bomb Maze.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomb Maze.release.xcconfig"; path = "Target Support Files/Pods-Bomb Maze/Pods-Bomb Maze.release.xcconfig"; sourceTree = "<group>"; };
+		53448BEB169D6FDF05431D77 /* Pods-Ball Smash Maze.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ball Smash Maze.debug.xcconfig"; path = "Target Support Files/Pods-Ball Smash Maze/Pods-Ball Smash Maze.debug.xcconfig"; sourceTree = "<group>"; };
+		57EF2C892C0B870149A14CBB /* Pods_Ball_Smash_Maze.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ball_Smash_Maze.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B2FE29FC5D453534CD0C59 /* Pods-Bomb Maze.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomb Maze.debug.xcconfig"; path = "Target Support Files/Pods-Bomb Maze/Pods-Bomb Maze.debug.xcconfig"; sourceTree = "<group>"; };
-		B5D087272EA67763003B9027 /* Bomb Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bomb Maze.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0E87F50B5847BA645280FD8 /* Pods_Bomb_Maze.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bomb_Maze.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5D087272EA67763003B9027 /* Ball Smash Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ball Smash Maze.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4D531317BAF657FC087417 /* Pods-Ball Smash Maze.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ball Smash Maze.release.xcconfig"; path = "Target Support Files/Pods-Ball Smash Maze/Pods-Ball Smash Maze.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B5D087392EA67764003B9027 /* Exceptions for "Bomb Maze" folder in "Bomb Maze" target */ = {
+		B5D087392EA67764003B9027 /* Exceptions for "Bomb Maze" folder in "Ball Smash Maze" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Resources/Info.plist,
 			);
-			target = B5D087262EA67763003B9027 /* Bomb Maze */;
+			target = B5D087262EA67763003B9027 /* Ball Smash Maze */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -45,7 +47,7 @@
 		B5D087292EA67763003B9027 /* Bomb Maze */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				B5D087392EA67764003B9027 /* Exceptions for "Bomb Maze" folder in "Bomb Maze" target */,
+				B5D087392EA67764003B9027 /* Exceptions for "Bomb Maze" folder in "Ball Smash Maze" target */,
 			);
 			path = "Bomb Maze";
 			sourceTree = "<group>";
@@ -58,7 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5FD777D2EB9007B0099BF1C /* Lottie in Frameworks */,
-				4A85B43A184D40DF020E527A /* Pods_Bomb_Maze.framework in Frameworks */,
+				42561152040BA4FDEEB7C3FB /* Pods_Ball_Smash_Maze.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,8 +72,9 @@
 			children = (
 				70B2FE29FC5D453534CD0C59 /* Pods-Bomb Maze.debug.xcconfig */,
 				52D4FEF6615E9CCBAD6F238A /* Pods-Bomb Maze.release.xcconfig */,
+				53448BEB169D6FDF05431D77 /* Pods-Ball Smash Maze.debug.xcconfig */,
+				FF4D531317BAF657FC087417 /* Pods-Ball Smash Maze.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -88,7 +91,7 @@
 		B5D087282EA67763003B9027 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B5D087272EA67763003B9027 /* Bomb Maze.app */,
+				B5D087272EA67763003B9027 /* Ball Smash Maze.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +99,7 @@
 		B5FD77822EB900A20099BF1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D0E87F50B5847BA645280FD8 /* Pods_Bomb_Maze.framework */,
+				57EF2C892C0B870149A14CBB /* Pods_Ball_Smash_Maze.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -104,15 +107,16 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B5D087262EA67763003B9027 /* Bomb Maze */ = {
+		B5D087262EA67763003B9027 /* Ball Smash Maze */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B5D0873A2EA67764003B9027 /* Build configuration list for PBXNativeTarget "Bomb Maze" */;
+			buildConfigurationList = B5D0873A2EA67764003B9027 /* Build configuration list for PBXNativeTarget "Ball Smash Maze" */;
 			buildPhases = (
 				80D1DD540FEB1B7306354BCA /* [CP] Check Pods Manifest.lock */,
 				B5D087232EA67763003B9027 /* Sources */,
 				B5D087242EA67763003B9027 /* Frameworks */,
 				B5D087252EA67763003B9027 /* Resources */,
 				B5FD77812EB900930099BF1C /* Embed Frameworks */,
+				D235E48962E36B35E4DF5074 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -121,12 +125,12 @@
 			fileSystemSynchronizedGroups = (
 				B5D087292EA67763003B9027 /* Bomb Maze */,
 			);
-			name = "Bomb Maze";
+			name = "Ball Smash Maze";
 			packageProductDependencies = (
 				B5FD777C2EB9007B0099BF1C /* Lottie */,
 			);
 			productName = "Bomb Maze";
-			productReference = B5D087272EA67763003B9027 /* Bomb Maze.app */;
+			productReference = B5D087272EA67763003B9027 /* Ball Smash Maze.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +148,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B5D087222EA67762003B9027 /* Build configuration list for PBXProject "Bomb Maze" */;
+			buildConfigurationList = B5D087222EA67762003B9027 /* Build configuration list for PBXProject "Ball Smash Maze" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -161,7 +165,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B5D087262EA67763003B9027 /* Bomb Maze */,
+				B5D087262EA67763003B9027 /* Ball Smash Maze */,
 			);
 		};
 /* End PBXProject section */
@@ -192,11 +196,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Bomb Maze-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Ball Smash Maze-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D235E48962E36B35E4DF5074 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ball Smash Maze/Pods-Ball Smash Maze-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ball Smash Maze/Pods-Ball Smash Maze-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ball Smash Maze/Pods-Ball Smash Maze-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -214,15 +235,19 @@
 /* Begin XCBuildConfiguration section */
 		B5D0873B2EA67764003B9027 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70B2FE29FC5D453534CD0C59 /* Pods-Bomb Maze.debug.xcconfig */;
+			baseConfigurationReference = 53448BEB169D6FDF05431D77 /* Pods-Ball Smash Maze.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M4GLLYQLCP;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = LY77RWAR6U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bomb Maze/Resources/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Ball Smash Maze";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -232,8 +257,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "myProject.Bomb-Maze";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smashes.bmaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ikey;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -242,15 +269,19 @@
 		};
 		B5D0873C2EA67764003B9027 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52D4FEF6615E9CCBAD6F238A /* Pods-Bomb Maze.release.xcconfig */;
+			baseConfigurationReference = FF4D531317BAF657FC087417 /* Pods-Ball Smash Maze.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M4GLLYQLCP;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = LY77RWAR6U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bomb Maze/Resources/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Ball Smash Maze";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -260,8 +291,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "myProject.Bomb-Maze";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smashes.bmaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ikey;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -305,7 +338,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -368,7 +401,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -390,7 +423,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B5D087222EA67762003B9027 /* Build configuration list for PBXProject "Bomb Maze" */ = {
+		B5D087222EA67762003B9027 /* Build configuration list for PBXProject "Ball Smash Maze" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5D0873D2EA67764003B9027 /* Debug */,
@@ -399,7 +432,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B5D0873A2EA67764003B9027 /* Build configuration list for PBXNativeTarget "Bomb Maze" */ = {
+		B5D0873A2EA67764003B9027 /* Build configuration list for PBXNativeTarget "Ball Smash Maze" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5D0873B2EA67764003B9027 /* Debug */,
