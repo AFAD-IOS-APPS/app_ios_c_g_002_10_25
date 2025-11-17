@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A85B43A184D40DF020E527A /* Pods_Bomb_Maze.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E87F50B5847BA645280FD8 /* Pods_Bomb_Maze.framework */; };
 		B5FD777D2EB9007B0099BF1C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B5FD777C2EB9007B0099BF1C /* Lottie */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		52D4FEF6615E9CCBAD6F238A /* Pods-Bomb Maze.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomb Maze.release.xcconfig"; path = "Target Support Files/Pods-Bomb Maze/Pods-Bomb Maze.release.xcconfig"; sourceTree = "<group>"; };
+		70B2FE29FC5D453534CD0C59 /* Pods-Bomb Maze.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomb Maze.debug.xcconfig"; path = "Target Support Files/Pods-Bomb Maze/Pods-Bomb Maze.debug.xcconfig"; sourceTree = "<group>"; };
 		B5D087272EA67763003B9027 /* Bomb Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bomb Maze.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E87F50B5847BA645280FD8 /* Pods_Bomb_Maze.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bomb_Maze.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -54,18 +58,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5FD777D2EB9007B0099BF1C /* Lottie in Frameworks */,
+				4A85B43A184D40DF020E527A /* Pods_Bomb_Maze.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39519C1314A1A4DA54AC57AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70B2FE29FC5D453534CD0C59 /* Pods-Bomb Maze.debug.xcconfig */,
+				52D4FEF6615E9CCBAD6F238A /* Pods-Bomb Maze.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B5D0871E2EA67762003B9027 = {
 			isa = PBXGroup;
 			children = (
 				B5D087292EA67763003B9027 /* Bomb Maze */,
 				B5FD77822EB900A20099BF1C /* Frameworks */,
 				B5D087282EA67763003B9027 /* Products */,
+				39519C1314A1A4DA54AC57AB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +96,7 @@
 		B5FD77822EB900A20099BF1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0E87F50B5847BA645280FD8 /* Pods_Bomb_Maze.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -91,6 +108,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5D0873A2EA67764003B9027 /* Build configuration list for PBXNativeTarget "Bomb Maze" */;
 			buildPhases = (
+				80D1DD540FEB1B7306354BCA /* [CP] Check Pods Manifest.lock */,
 				B5D087232EA67763003B9027 /* Sources */,
 				B5D087242EA67763003B9027 /* Frameworks */,
 				B5D087252EA67763003B9027 /* Resources */,
@@ -158,6 +176,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		80D1DD540FEB1B7306354BCA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bomb Maze-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B5D087232EA67763003B9027 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -171,6 +214,7 @@
 /* Begin XCBuildConfiguration section */
 		B5D0873B2EA67764003B9027 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70B2FE29FC5D453534CD0C59 /* Pods-Bomb Maze.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -198,6 +242,7 @@
 		};
 		B5D0873C2EA67764003B9027 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52D4FEF6615E9CCBAD6F238A /* Pods-Bomb Maze.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
