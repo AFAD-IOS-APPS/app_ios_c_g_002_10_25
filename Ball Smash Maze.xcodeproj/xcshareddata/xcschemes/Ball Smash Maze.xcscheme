@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1640"
-   version = "2.2">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
@@ -16,19 +16,10 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B5D087262EA67763003B9027"
-               BuildableName = "Bomb Maze.app"
-               BlueprintName = "Bomb Maze"
-               ReferencedContainer = "container:Bomb Maze.xcodeproj">
+               BuildableName = "Ball Smash Maze.app"
+               BlueprintName = "Ball Smash Maze"
+               ReferencedContainer = "container:Ball Smash Maze.xcodeproj">
             </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <AutocreatedTestPlanReference>
-            </AutocreatedTestPlanReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
@@ -54,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B5D087262EA67763003B9027"
-            BuildableName = "Bomb Maze.app"
-            BlueprintName = "Bomb Maze"
-            ReferencedContainer = "container:Bomb Maze.xcodeproj">
+            BuildableName = "Ball Smash Maze.app"
+            BlueprintName = "Ball Smash Maze"
+            ReferencedContainer = "container:Ball Smash Maze.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -71,20 +62,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B5D087262EA67763003B9027"
-            BuildableName = "Bomb Maze.app"
-            BlueprintName = "Bomb Maze"
-            ReferencedContainer = "container:Bomb Maze.xcodeproj">
+            BuildableName = "Ball Smash Maze.app"
+            BlueprintName = "Ball Smash Maze"
+            ReferencedContainer = "container:Ball Smash Maze.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B5D087262EA67763003B9027"
-            BuildableName = "Bomb Maze.app"
-            BlueprintName = "Bomb Maze"
-            ReferencedContainer = "container:Bomb Maze.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

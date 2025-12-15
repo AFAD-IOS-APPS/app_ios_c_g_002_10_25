@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		42561152040BA4FDEEB7C3FB /* Pods_Ball_Smash_Maze.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57EF2C892C0B870149A14CBB /* Pods_Ball_Smash_Maze.framework */; };
-		B5FD777D2EB9007B0099BF1C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B5FD777C2EB9007B0099BF1C /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5FD777D2EB9007B0099BF1C /* Lottie in Frameworks */,
 				42561152040BA4FDEEB7C3FB /* Pods_Ball_Smash_Maze.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,9 +124,6 @@
 				B5D087292EA67763003B9027 /* Bomb Maze */,
 			);
 			name = "Ball Smash Maze";
-			packageProductDependencies = (
-				B5FD777C2EB9007B0099BF1C /* Lottie */,
-			);
 			productName = "Bomb Maze";
 			productReference = B5D087272EA67763003B9027 /* Ball Smash Maze.app */;
 			productType = "com.apple.product-type.application";
@@ -157,9 +152,6 @@
 			);
 			mainGroup = B5D0871E2EA67762003B9027;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				B5FD777B2EB9007B0099BF1C /* XCRemoteSwiftPackageReference "lottie-ios" */,
-			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B5D087282EA67763003B9027 /* Products */;
 			projectDirPath = "";
@@ -450,25 +442,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B5FD777B2EB9007B0099BF1C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.5.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B5FD777C2EB9007B0099BF1C /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B5FD777B2EB9007B0099BF1C /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B5D0871F2EA67762003B9027 /* Project object */;
 }
