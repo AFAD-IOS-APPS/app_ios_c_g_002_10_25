@@ -90,7 +90,7 @@ class SplashViewController: UIViewController {
             self?.animationView?.animation = nil
             self?.animationView = nil
             
-            self?.coordinator.startMainFlow()
+            self?.coordinator.showWeb()
         })
     }
 }

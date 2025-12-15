@@ -20,6 +20,9 @@ final class UserDefaultsManager {
     }
     
     private enum Keys: String {
+        case userId
+        case savedURL
+        
         case name
         case age
         case balance
@@ -30,6 +33,16 @@ final class UserDefaultsManager {
         case purchasedBoardIds
         case isMusicEnabled
         case musicVolume
+    }
+    
+    var userId: String? {
+        get { defaults.string(forKey: Keys.userId.rawValue) }
+        set { defaults.set(newValue, forKey: Keys.userId.rawValue) }
+    }
+    
+    var savedURL: String? {
+        get { defaults.string(forKey: Keys.savedURL.rawValue) }
+        set { defaults.set(newValue, forKey: Keys.savedURL.rawValue) }
     }
         
     var name: String? {

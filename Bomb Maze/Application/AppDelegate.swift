@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = MusicManager.shared
         _ = UserDefaultsManager.shared
         LevelsLoader.shared.loadLevels()
+        FirebaseApp.configure()
         return true
     }
 

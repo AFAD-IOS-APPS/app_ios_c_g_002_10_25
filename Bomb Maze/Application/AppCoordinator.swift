@@ -21,12 +21,9 @@ final class AppCoordinator {
         showSplash()
     }
     
-    func startMainFlow() {
-        if let _ = UserDefaultsManager.shared.name {
-            showHome()
-        } else {
-            showRegister()
-        }
+    func showWeb() {
+        let webCoordinator = WebCoordinator(navigationController: navigationController)
+        webCoordinator.start()
     }
     
     private func setupWindow() {
@@ -40,16 +37,5 @@ final class AppCoordinator {
         let splashCoordinator = SplashCoordinator(navigationController: navigationController)
         splashCoordinator.parentCoordinator = self
         splashCoordinator.start()
-    }
-    
-    private func showHome() {
-        let homeCoordinator = HomeCoordinator(navigationController: navigationController)
-        homeCoordinator.start()
-    }
-    
-    private func showRegister() {
-        let registerCoordinator = RegisterCoordinator(navigationController: navigationController)
-        registerCoordinator.parentCoordinator = self
-        registerCoordinator.start()
     }
 }

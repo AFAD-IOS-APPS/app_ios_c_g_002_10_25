@@ -7,5 +7,6 @@ target 'Ball Smash Maze' do
 
   # Pods for Ball Smash Maze
   pod 'lottie-ios'
+  pod 'FirebaseFirestore'
 
 end

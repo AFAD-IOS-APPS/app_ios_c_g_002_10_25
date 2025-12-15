@@ -20,7 +20,7 @@ final class SplashCoordinator {
         navigationController.setViewControllers([splashVC], animated: false)
     }
     
-    func startMainFlow() {
-        parentCoordinator?.startMainFlow()
+    func showWeb() {
+        parentCoordinator?.showWeb()
     }
 }

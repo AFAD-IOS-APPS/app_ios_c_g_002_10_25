@@ -8,7 +8,7 @@
 import UIKit
 
 final class RegisterCoordinator {
-    weak var parentCoordinator: AppCoordinator?
+    weak var parentCoordinator: WebCoordinator?
     private let navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -23,10 +23,10 @@ final class RegisterCoordinator {
         let presenter = RegisterPresenter(coordinator: self)
         let view = RegisterViewController(presenter: presenter)
         presenter.view = view
-        navigationController.setViewControllers([view], animated: true)
+        navigationController.pushViewController(view, animated: true)
     }
 
     func finishRegistration() {
-        parentCoordinator?.start()
+        parentCoordinator?.startMainFlow()
     }
 }
