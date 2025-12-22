@@ -55,6 +55,7 @@ final class WebPresenter {
     
     func startMainFlow() {
         DispatchQueue.main.async {
+            _ = MusicManager.shared
             self.coordinator.startMainFlow()
         }
     }

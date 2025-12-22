@@ -21,6 +21,7 @@ class WebViewController: UIViewController, WebViewProtocol {
     
     private var baseDomain: String = ""
     private var redirectCaptured = false
+    private var initialRequestPassed = false
     
     init(presenter: WebPresenter) {
         self.presenter = presenter
@@ -33,7 +34,7 @@ class WebViewController: UIViewController, WebViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 0.051, green: 0.063, blue: 0.086, alpha: 1)
         
         setupWebView()
         
@@ -88,10 +89,16 @@ extension WebViewController: WKNavigationDelegate {
             return
         }
 
-        if host == baseDomain {
+        if host == baseDomain && initialRequestPassed {
             presenter.startMainFlow()
             decisionHandler(.cancel)
             return
+        }
+        
+        if host == baseDomain && !initialRequestPassed {
+          initialRequestPassed = true
+          decisionHandler(.allow)
+          return
         }
 
         if !redirectCaptured && host != baseDomain {
